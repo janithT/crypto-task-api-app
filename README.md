@@ -52,7 +52,7 @@ A Laravel-based RESTful API for managing tasks with full CRUD operations, filter
 
 - ✅ User Authentication (JWT) - (User signup/signin)
 - 🔄 Task CRUD (Create, Read, Update, Delete)
-- 🔍 Filter tasks by status
+- 🔍 Filter tasks by status and set task status completed
 - 📄 Paginated API responses
 - 📦 Clean architecture (Controller → Service Layer → Model)
 - 📊 Well-structured JSON responses
