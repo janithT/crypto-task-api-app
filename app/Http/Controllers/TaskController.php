@@ -6,6 +6,7 @@ use App\Http\Requests\TaskRequest;
 use App\Services\TaskService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\JsonResponse;
 
 class TaskController extends Controller
 {
@@ -17,8 +18,11 @@ class TaskController extends Controller
 
     /**
      * Display a listing of the resource.
+     * 
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function index(Request $request)
+    public function index(Request $request): JsonResponse
     {
         try {
             // use filter if exists
@@ -47,8 +51,11 @@ class TaskController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @param TaskRequest $request
+     * @return JsonResponse
      */
-    public function store(TaskRequest $request)
+    public function store(TaskRequest $request): JsonResponse
     {
         try {
             $task = $this->taskService->createTask($request->validated());
@@ -61,8 +68,10 @@ class TaskController extends Controller
 
     /**
      * Display the specified resource.
+     * @return JsonResponse
+     * 
      */
-    public function show(string $id)
+    public function show(string $id) :JsonResponse
     {
         try {
             if (empty($id)) {
@@ -84,8 +93,9 @@ class TaskController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @return JsonResponse
      */
-    public function update(TaskRequest  $request, string $id)
+    public function update(TaskRequest  $request, string $id): JsonResponse
     {
         try {
             $task = $this->taskService->updateTask($id, $request->validated());
@@ -98,8 +108,10 @@ class TaskController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * 
+     * @return JsonResponse
      */
-    public function destroy(string $id)
+    public function destroy(string $id): JsonResponse
     {
         try {
             $task = $this->taskService->deleteTask($id);
@@ -112,8 +124,10 @@ class TaskController extends Controller
 
     /**
      * Mark the specified task as complete.
+     * 
+     * @return JsonResponse
      */
-    public function complete(string $id)
+    public function complete(string $id): JsonResponse
     {
         try {
             $task = $this->taskService->completeTask($id);
