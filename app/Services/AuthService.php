@@ -64,7 +64,7 @@ class AuthService
 
         $token = JWTAuth::attempt($credentials);
         if (!$token) {
-            return ['error' => 'Invalid credentials'];
+            return ['error' => 'Invalid Credentials'];
         }
 
         return $this->withJwTToken(['token' => $token]);
