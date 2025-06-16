@@ -53,10 +53,14 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * Log in a user and return a JWT token.
+     *
+     * @return JsonResponse
+     */
     public function logout(): JsonResponse
     {
         $this->authService->logout();
         return apiResponseWithStatusCode([], 'success', 'You have successfully logged out', '', 200);
     }
-
 }
