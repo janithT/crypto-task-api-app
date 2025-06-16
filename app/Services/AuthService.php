@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 use App\Models\User;
@@ -16,7 +17,7 @@ class AuthService
      * @param array $data
      * @return User
      */
-    public function userRegister(array $data) : User
+    public function userRegister(array $data): User
     {
 
         $fullName = $data['first_name'] . ' ' . $data['last_name'];
@@ -44,7 +45,6 @@ class AuthService
 
             DB::commit();
             return $user;
-
         } catch (\Throwable $e) {
             DB::rollBack();
             Log::error('User registration failed: ' . $e->getMessage(), ['trace' => $e->getTraceAsString()]);

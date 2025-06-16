@@ -11,10 +11,7 @@ use Illuminate\Http\JsonResponse;
 class TaskController extends Controller
 {
 
-    public function __construct(public TaskService $taskService)
-    {
-        
-    }
+    public function __construct(public TaskService $taskService) {}
 
     /**
      * Display a listing of the resource.
@@ -71,7 +68,7 @@ class TaskController extends Controller
      * @return JsonResponse
      * 
      */
-    public function show(string $id) :JsonResponse
+    public function show(string $id): JsonResponse
     {
         try {
             if (empty($id)) {
@@ -86,9 +83,9 @@ class TaskController extends Controller
 
             return apiResponseWithStatusCode($task, 'success', 'Task created successfully', '', 201);
         } catch (\Exception $e) {
-            Log::error('Task show failed: ' . $e->getMessage() . ' | id-'. $id);
+            Log::error('Task show failed: ' . $e->getMessage() . ' | id-' . $id);
             return apiResponseWithStatusCode([], 'error', $e->getMessage(), '', 422);
-        } 
+        }
     }
 
     /**
