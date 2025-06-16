@@ -1,15 +1,13 @@
 <?php
 
 namespace App\Services;
+
 use App\Models\Task;
 
 class TaskService
 {
 
-    public function __construct(public Task $task)
-    {
-        
-    }
+    public function __construct(public Task $task) {}
 
     /**
      * Get all tasks.
@@ -28,9 +26,8 @@ class TaskService
             // ...
             ->orderBy('id', 'desc')
             ->paginate($perPage);
-
     }
-    
+
     /**
      * Create a new task.
      *
@@ -42,9 +39,9 @@ class TaskService
 
         $task_key = generateTaskKey('task_', true);
 
-        // assume title should unique .
+        // assume title should unique if not remove this.
         return $this->task->firstOrCreate(
-            ['taskkey' => $task_key, 'title' => $data['title']], 
+            ['taskkey' => $task_key, 'title' => $data['title']],
             [
                 'title' => $data['title'],
                 'description' => $data['description'] ?? null,
@@ -73,7 +70,8 @@ class TaskService
      * @param string $id
      * @return Task
      */
-    public function showTask(string $id) {
+    public function showTask(string $id)
+    {
 
         $task = $this->task->findOrFail($id);
         return $task;
@@ -111,5 +109,4 @@ class TaskService
 
         return $task;
     }
-
 }
